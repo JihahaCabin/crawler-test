@@ -40,4 +40,15 @@ public class JsoupFirstTest {
         String title = doc.getElementsByTag("title").first().text();
         System.out.println(title);
     }
+
+
+    @Test
+    void testFile() throws Exception {
+        //解析文件
+        Document doc = Jsoup.parse(new File("D:\\Java爬虫\\first-crawler\\src\\main\\resources\\baidu.html"), "utf8");
+
+        //使用标签选择器
+        String title = doc.getElementsByTag("title").first().text();
+        System.out.println(title);
+    }
 }
