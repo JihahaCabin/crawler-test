@@ -1,6 +1,5 @@
 package com.example.firstcrawler;
 
-
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -10,8 +9,10 @@ import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 
-public class CrawlerFirst {
-
+/**
+ * 不带参数的get请求
+ */
+public class HttpGetTest {
     public static void main(String[] args) throws IOException {
         // 打开浏览器，创建httpclient对象
         CloseableHttpClient httpClient = HttpClients.createDefault();
@@ -26,7 +27,7 @@ public class CrawlerFirst {
         if (response.getStatusLine().getStatusCode() == 200) {
             HttpEntity entity = response.getEntity();
             String content = EntityUtils.toString(entity, "utf8");
-            System.out.println(content);
+            System.out.println(content.length());
         }
 
         response.close();
