@@ -3,6 +3,7 @@ package com.example.firstcrawler.jsoup;
 
 import org.apache.commons.io.FileUtils;
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Attributes;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -11,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.File;
 import java.net.URL;
+import java.util.Set;
 
 /**
  * jsoup对多线程、连接池、代理支出不太好，一般使用jsoup作为html的解析工具
@@ -80,6 +82,38 @@ public class JsoupFirstTest {
         System.out.println(elementsByAttribute);
         Elements src = doc.getElementsByAttributeValue("src", "./baidu_files/sbase-0948aa26f1.js.下载");
         System.out.println(src);
+
+    }
+
+    /**
+     * 从元素中获取数据
+     *
+     * @throws Exception
+     */
+    @Test
+    void testData() throws Exception {
+        //解析文件
+        Document doc = Jsoup.parse(new File("D:\\Java爬虫\\first-crawler\\src\\main\\resources\\baidu.html"), "utf8");
+
+        //获取元素
+        Element element = doc.getElementById("testId");
+        System.out.println(element);
+        //从元素中获取值
+        //从元素中获取id
+        String id = element.id();
+        System.out.println(id);
+        //从元素中获取className
+        Set<String> strings = element.classNames();
+        System.out.println(strings);
+        //从元素中获取属性的值attr
+        String rel = element.attr("rel");
+        System.out.println(rel);
+        //从元素中获取所有属性attributes
+        Attributes attributes = element.attributes();
+        System.out.println(attributes);
+        //从元素中获取文本内容text
+        String text = element.text();
+        System.out.println(text);
 
     }
 
