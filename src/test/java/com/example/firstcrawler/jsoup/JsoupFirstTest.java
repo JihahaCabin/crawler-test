@@ -117,4 +117,32 @@ public class JsoupFirstTest {
 
     }
 
+    /**
+     * 使用selector选择器，获取元素
+     */
+    @Test
+    void testSelector() throws Exception {
+        //解析文件
+        Document doc = Jsoup.parse(new File("D:\\Java爬虫\\first-crawler\\src\\main\\resources\\baidu.html"), "utf8");
+
+        //通过标签查找元素
+        Elements span = doc.select("span");
+//        System.out.println(span);
+
+        //通过id查找元素 #id
+        Elements id = doc.select("#testId");
+        System.out.println(id);
+
+        //通过class名称查找元素 .class
+        Elements classEle = doc.select(".s-top-wrap");
+        System.out.println(classEle);
+
+        //通过属性查找元素，[attribute]
+        Elements select = doc.select("[rel]");
+        System.out.println(select);
+        //利用属性值查找元素，[attr=value]
+        Elements select1 = doc.select("[href=\"./baidu_files/user_quit_dialog-527f3ede74.css\"]");
+        System.out.println(select1);
+    }
+
 }
