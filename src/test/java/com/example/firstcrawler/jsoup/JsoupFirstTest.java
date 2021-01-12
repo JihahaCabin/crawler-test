@@ -145,4 +145,25 @@ public class JsoupFirstTest {
         System.out.println(select1);
     }
 
+    /**
+     * selector选择器组合使用
+     */
+    @Test
+    void testSelector2() throws Exception {
+
+        // el#id： 元素加ID,比如h3#city_bj
+        // el.class: 元素加class,比如： li.class_a
+        // el[attr]: 元素+属性名，比如： span[abc]
+        // 任意组合
+        // ancestor child: 查找某元素下的子元素，比如 .city_con li 查找"city_con"下所有li
+        // parent > child: 查找某个父元素下的直接子元素，比如 .city_con > ul > li 查找city_con第一级(直接子元素) 的ul,再查找所有ul下的第一级li
+        // parent > *: 查找某个父元素下所有直接子元素
+        //解析文件
+        Document doc = Jsoup.parse(new File("D:\\Java爬虫\\first-crawler\\src\\main\\resources\\baidu.html"), "utf8");
+
+        //通过标签查找元素
+        Elements span = doc.select("span.bar-playing");
+        System.out.println(span);
+    }
+
 }
